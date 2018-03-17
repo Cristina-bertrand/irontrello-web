@@ -1,0 +1,24 @@
+<header class="mb-5">
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      IronTrello
+      <i class="fab fa-trello"></i>
+    </a>
+
+    <div>
+      <button class="btn btn-light btn-sm mr-1" *ngIf="user">
+        <i class="fas fa-user"></i>
+        {{ user.email }}
+      </button>
+
+      <app-login class="mr-1" *ngIf="!user"></app-login>
+
+      <button class="btn btn-light btn-sm mr-1" (click)="logOut()" *ngIf="user">
+        <i class="fas fa-power-off"></i>
+      </button>
+
+      <app-modal *ngIf="user"></app-modal>
+    </div>
+  </nav>
+</header>
+
