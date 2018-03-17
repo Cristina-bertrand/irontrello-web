@@ -49,8 +49,16 @@ export class CardService {
       .catch(error => this.handleError(error));
   }
 
-  delete(card: Card): Observable {
-    return this.http.delete(`${this.endpoint}/${card.id}`, JSON.stringify(card))
+  edit(card: Card): Observable<Card> {
+    return this.http.put(`${this.endpoint}/${card.id}`, JSON.stringify(card), this.defaultOptions)
+      .map((res: Response) => {
+        this.cardsSubject.next(this.cards);
+      })
+      .catch(error => this.handleError(error));
+  }
+
+  delete(card: Card): Observable<void> {
+    return this.http.delete(`${this.endpoint}/${card.id}`, this.defaultOptions)
       .map((res: Response) => {
         this.cards = this.cards.filter(c => card.id !== c.id);
         this.cardsSubject.next(this.cards);

@@ -12,7 +12,7 @@ import { User } from '../../shared/model/user.model';
 export class BoardComponent implements OnInit {
   lists: Array<List> = [
     new List('ToDo'),
-    new List('Work In Progress'),
+    new List('WorkInProgress'),
     new List('Done')
   ];
 

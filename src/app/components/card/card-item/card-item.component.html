@@ -1,0 +1,40 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">New Card</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  
+    <form (ngSubmit)="onEdit(form)" #form="ngForm">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" name="title" class="form-control" id="title" [(ngModel)]="card.title" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea type="text" name="description" class="form-control" id="description" [(ngModel)]="card.description"></textarea>
+        </div>
+  
+        <div class="form-group">
+          <label for="list">List</label>
+          <select class="form-control" id="list" [(ngModel)]="card.list" name="list">
+            <option>ToDo</option>
+            <option>WorkInProgress</option>
+            <option>Done</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" [disabled]="!form.valid">Edit</button>
+      </div>
+    </form>
+  </ng-template>
+
+<button (click)="open(content)" class="btn btn-secondary btn-sm">
+    <i class="fas fa-edit"></i>
+    Edit
+  </button>

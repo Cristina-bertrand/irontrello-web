@@ -11,8 +11,14 @@ export class CardComponent {
   @Input() card: Card;
 
   constructor(private cardService: CardService) {}
+  onCreate() {
+    this.cardService.create(this.card).subscribe();
+  }
 
   onDelete() {
     this.cardService.delete(this.card).subscribe();
   }
+
+
+
 }

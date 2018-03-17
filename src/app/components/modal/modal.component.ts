@@ -9,6 +9,7 @@ import { CardService } from '../../shared/services/card.service';
   templateUrl: './modal.component.html'
 })
 export class ModalComponent {
+  
   card: Card = new Card();
   modal: NgbModalRef;
 
@@ -21,6 +22,7 @@ export class ModalComponent {
   }
 
   onSubmit(form: NgForm) {
+    
     this.cardService.create(this.card)
       .subscribe(() => {
         this.card = new Card();
