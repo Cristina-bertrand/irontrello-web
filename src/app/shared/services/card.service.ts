@@ -50,7 +50,7 @@ export class CardService {
   }
 
   delete(card: Card): Observable {
-    return this.http.delete(`${this.endpoint}/${card.id}`, JSON.stringify(card), this.defaultOptions)
+    return this.http.delete(`${this.endpoint}/${card.id}`, JSON.stringify(card))
       .map((res: Response) => {
         this.cards = this.cards.filter(c => card.id !== c.id);
         this.cardsSubject.next(this.cards);

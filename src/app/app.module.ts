@@ -15,6 +15,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { CardService } from './shared/services/card.service';
 import { HttpModule } from '@angular/http';
 import { SessionService } from './shared/services/session.service';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SessionService } from './shared/services/session.service';
     HeaderComponent,
     ListComponent,
     LoginComponent,
-    ModalComponent
+    ModalComponent,
+    SignupComponent
   ],
   imports: [
     HttpModule,

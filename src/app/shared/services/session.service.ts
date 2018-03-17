@@ -16,7 +16,7 @@ export class SessionService {
 
   private endpoint = `${environment.api}/session`;
   user: User;
-  private userSubject = new Subject<User>;
+  private userSubject = new Subject<User>();
 
   user$ = this.userSubject.asObservable();
 
@@ -25,8 +25,14 @@ export class SessionService {
   }
 
   create(user: User): Observable<User> {
-    return this.http.post(this.endpoint, JSON.stringify(user), this.defaultOptions)
+    return this.http.post(`${this.endpoint}/create`, JSON.stringify(user), this.defaultOptions)
       .map(res => this.doAuthentication(res.json()))
+      .catch(this.handleError);
+  }
+
+  signup(user: User): any {
+    return this.http.post(`${this.endpoint}/signup`, JSON.stringify(user), this.defaultOptions)
+      .map(res => res.json())
       .catch(this.handleError);
   }
 

@@ -11,6 +11,7 @@
         {{ user.email }}
       </button>
 
+      <app-signup class="mr-1"> </app-signup>
       <app-login class="mr-1" *ngIf="!user"></app-login>
 
       <button class="btn btn-light btn-sm mr-1" (click)="logOut()" *ngIf="user">
